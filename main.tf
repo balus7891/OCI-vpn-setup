@@ -37,6 +37,7 @@ module "drg"{
 
 }
 
+
 module "vpn"{
     source = "./modules/vpn"
     display_name_prefix = local.resource_name_prefix
@@ -45,5 +46,6 @@ module "vpn"{
     cpeip = var.cpe_ip
     ikeversion = var.ike_version
     staticroutes  = var.static_routes
+    #drgid = module.drg.drg_id
     drgid = var.drg_create != "Existing DRG will be used" ? module.drg.drg_id : var.drg_ocid
 }
