@@ -1,5 +1,5 @@
-# OCI-vpn-setup
-OCI Resource manager stack for IPsec VPN deployment
+# OCI IPSec VPN setup Stack
+OCI Resource manager stack for IPsec VPN deployment.
 
 ## Project description
 
