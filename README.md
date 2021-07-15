@@ -18,9 +18,11 @@ Here is a reference architecture diagram for the below deployment
 Two Modes:
 
 _Deploy IPSec VPN with new resources_ 
+
 **Create New Network (Virtual Cloud Network) as well as new DRG (Dynamic Routing Gateway)**
 
-_Deploy IPSec VPN with existing resource in the tenancy_  
+_Deploy IPSec VPN with existing resource in the tenancy_ 
+
 **You can use existing VCN (Virtual Cloud Network) and DRG (Dynamic Routing Gateway)**
 
 ## How to use code ?
