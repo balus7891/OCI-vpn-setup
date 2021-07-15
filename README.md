@@ -7,7 +7,16 @@ The stack help you to provision an IPsec VPN with all advanced options available
 
 ## Topology Diagram 
 
-## How to use code 
+## Functionality of the Stack
+
+Two Modes:
+
+Deploy IPSec VPN with new resources : **Create New Network (Virtual Cloud Network) as well as new DRG (Dynamic Routing Gateway)**
+
+Deploy IPSec VPN with existing resource in the tenancy : **You can use existing VCN (Virtual Cloud Network) and DRG (Dynamic Routing Gateway)**
+
+## How to use code ?
+
 
 ### Deploy Using Oracle Resource Manager
 
