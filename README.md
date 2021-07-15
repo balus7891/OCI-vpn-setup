@@ -30,5 +30,5 @@ The stack help you to provision an IPsec VPN with all advanced options available
 7. If no further changes are necessary, return to the Stack Details page, click **Terraform Actions**, and select **Apply**. 
 
 
-### I hope This stack helps you :) Thank you !!!
+### I hope the VPN stack helps you :) Thank you !!!
 
