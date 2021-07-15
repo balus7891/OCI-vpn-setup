@@ -7,6 +7,12 @@ The stack help you to provision an IPsec VPN with all advanced options available
 
 ## Topology Diagram 
 
+Here is a reference architecture diagram for the below deployment
+
+![](IPsecVPN.jpg)
+
+
+
 ## Functionality of the Stack
 
 Two Modes:
