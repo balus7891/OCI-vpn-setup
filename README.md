@@ -17,9 +17,11 @@ Here is a reference architecture diagram for the below deployment
 
 Two Modes:
 
-Deploy IPSec VPN with new resources : **Create New Network (Virtual Cloud Network) as well as new DRG (Dynamic Routing Gateway)**
+_Deploy IPSec VPN with new resources_ 
+**Create New Network (Virtual Cloud Network) as well as new DRG (Dynamic Routing Gateway)**
 
-Deploy IPSec VPN with existing resource in the tenancy : **You can use existing VCN (Virtual Cloud Network) and DRG (Dynamic Routing Gateway)**
+_Deploy IPSec VPN with existing resource in the tenancy_  
+**You can use existing VCN (Virtual Cloud Network) and DRG (Dynamic Routing Gateway)**
 
 ## How to use code ?
 
@@ -36,19 +38,19 @@ Deploy IPSec VPN with existing resource in the tenancy : **You can use existing 
 
 4. Follow the on-screen prompts and instructions to create the stack. Supply the required values
 
-5. After creating the stack, click **Terraform Actions**, and select **Plan**.
+5. After creating the stack, click **Plan** button.
 
 6. Wait for the job to be completed, and review the plan.
 
-    To make any changes, return to the Stack Details page, click **Edit Stack**, and make the required changes. Then, run the **Plan** action again.
+    To make any changes, return to the Stack Details page, click **Edit Stack**, and make the required changes. Then, run the **Plan** action again. (It's a best practive always plan and verify the action before **apply**)
 
-7. If no further changes are necessary, return to the Stack Details page, click **Terraform Actions**, and select **Apply**. 
+7. If no further changes are necessary, return to the Stack Details page, click **Apply**. 
 
 
 
 ### OCI Resource Manager Stack Output
 
-Once the job finsihed sucessfully you will receive the **Public IP and Pre-shared-Key** for both the tunnels.
+Once the job finsihed sucessfully you will receive the **Public IP and Pre-shared-Key** for both the tunnels as an ouput. You van see the same from the logs as well as from the **Output** tab
 
 
 
