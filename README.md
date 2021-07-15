@@ -29,6 +29,10 @@ The stack help you to provision an IPsec VPN with all advanced options available
 
 7. If no further changes are necessary, return to the Stack Details page, click **Terraform Actions**, and select **Apply**. 
 
+### Deploy Using Oracle Resource Manager
+
+Once the job finsihed sucessfully you will receive the **Public IP and Pre-shared-Key** for both the tunnels.
+
 
 ### I hope the VPN stack helps you :) Thank you !!!
 
