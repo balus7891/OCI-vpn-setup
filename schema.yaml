@@ -1,0 +1,224 @@
+title: Lift Service IPsec VPN Stack
+description: Input variables for the IPsec VPN Stack
+schemaVersion: 1.1.0
+version: "2021"
+locale: "en"
+
+groupings:
+
+- title: "General Settings"
+  variables:
+  - ${quick_create}
+  - ${res_name}
+  - ${advanced_mode}
+  - ${runtime_mode}
+  - ${compartment_ocid}
+  - ${drg_create}
+  - ${cpe_model}
+  - ${ike_version}
+  - ${cpe_ip}
+  - ${static_routes}  
+
+- title: "Network Configuration"
+  visible: ${quick_create}
+  variables:
+  - ${vcn_cidr}
+  - ${vcnCompartment}
+  - ${vcn}
+ 
+- title: "DRG Configuration"
+  visible: ${drg_create}
+  variables: 
+  - ${drg_ocid}
+  - ${drg}
+
+
+variables:
+  # General Configuration
+
+  tenancy_ocid:
+    title: Tenancy ID
+    description: The Oracle Cloud Identifier (OCID) for your tenancy
+    type: string
+    required: true
+    visible: false
+
+  region:
+    title: Region
+    description: The region in which to create all resources
+    type: oci:identity:region:name
+    required: true
+    visible: false
+
+  res_name:
+    title: Resource Display Name Prefix
+    description: Display name prefix for all generated resources. Recomending to provide the customer name or uniqe name to identify the resource.If not specified, this will be automatically generated.
+    type: string
+    required: false
+
+  compartment_ocid:
+    title: Target Compartment
+    description: The target compartment for the IPSec VPN and associated resources
+    type: oci:identity:compartment:id
+    required: true
+
+
+  advanced_mode:
+    title: Advanced Settings
+    description: Show not-so-common settings.
+    type: boolean
+    default: false
+    visible: false
+
+  runtime_mode:
+    title: Runtime Mode
+    visible: false
+    type: enum
+    enum:
+    - production
+    - development
+    default: production
+    required: true
+
+  quick_create:
+    title: Networking Options
+    description: The VPN can be created along with a new VCN, that will be provisioned and configured for you, or  it can be created inside an existing network.
+    visible: true
+    type: enum
+    enum:
+     - New networking components will be created
+     - Existing networking components will be used
+    default: Create Network Resources
+    required: true
+
+  cpe_model:
+    title: Customer Premise Equipment
+    description: Select the CPE Model (default will be "other")
+    visible: true
+    type: enum
+    enum:
+     - FortiGate 6.0.4 or later
+     - IOS version 15.4M or later
+     - N.A
+     - ASA Route-Based VPN 9.7.1 or later
+     - SRX Series - JunOS 11.0 or later
+     - IX Series 10.1.16
+     - "FITELnet-F220/F221 Firmware 01.00(00)[0]00.00.0 [2019/07/05 15:00]"
+     - R80.20
+     - ASA Policy-Based VPN 8.5+ (single tunnel, static)
+     - 3.18 or later
+     - RTX RTX830 Firmware Rev.15.02.03
+     - RTX RTX1210 Firmware Rev.14.01.28
+     - Firebox with Fireware v12
+     - PAN-OS 8.0.0
+     - MX Series - JunOS 15.1 or later 
+    default: N.A
+    required: true    
+
+  ike_version:
+    title: IKE Version for the tunnel
+    description: Select IKE version (Default will be IKEv1)
+    visible: true
+    type: enum
+    enum:
+     - V1
+     - V2
+    default: V1
+    required: true  
+   
+  cpe_ip:
+    title: CPE (Customer Premises Equipment) IP
+    description: Enter the customer edge public IPv4 address
+    visible: true
+    type: string
+    default:
+    required: true  
+    
+  static_routes:
+    title: Static Routes
+    description: Enter the static routes
+    visible: true
+    type: array
+    items:
+        type: string
+    minItems: 1
+    uniqueItems: true
+    required: true 
+
+  drg_create:
+    title: DRG Options
+    description: The VPN can be created along with a new DRG, that will be provisioned and configured for you, or  it can be created inside an existing DRG.
+    visible: true
+    type: enum
+    enum:
+     - Existing DRG will be used
+     - Create New DRG 
+    default: Create DRG Resources
+    required: true
+    
+
+
+ 
+  # Create Network options
+  vcn_cidr:
+    title: Virtual Network CIDR
+    description: The CIDR to assign to the new virtual cloud network (VCN) to create for this service.
+    type: string
+    default: 10.0.0.0/16
+    dependsOn:
+       compartmentId: ${subnetCompartment}
+       vcnId: ${vcn}
+       
+    visible:
+       eq:
+        - ${quick_create}
+        - New networking components will be created
+
+
+  vcnCompartment:
+    type: oci:identity:compartment:id
+    title: VCN Compartment
+    visible:
+       eq:
+        - ${quick_create}
+        - Existing networking components will be used
+    required: true
+
+  vcn:
+    type: oci:core:vcn:id
+    title: VCN
+    visible:
+       eq:
+        - ${quick_create}
+        - Existing networking components will be used
+    dependsOn:
+      compartmentId: ${vcnCompartment}
+    required: true
+
+  # Create DRG options
+  
+  drg_ocid:
+    title: Target DRG
+    description: The target DRG OCID Required for provisioning the VPN
+    type: string
+    default: 
+    dependsOn:
+       compartmentId: ${subnetCompartment}
+       vcnId: ${vcn}
+       
+    visible:
+       eq:
+        - ${drg_create}
+        - Existing DRG will be used
+
+  drg:
+    title: Create New DRG
+    description: create new DRG
+    type: boolean
+    default: false
+    visible:
+       eq:
+        - ${drg_create}
+        - Create New DRG    
+
+
