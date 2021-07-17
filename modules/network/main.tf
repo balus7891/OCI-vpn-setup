@@ -1,4 +1,7 @@
-// Author Bala Sunil
+/*
+* Copyright (c) 2021 July
+//Author Balasubramannyam Sunil, email: balasubramannyam.sunil@oracle.com
+ */
 
 
 
@@ -9,4 +12,3 @@ resource "oci_core_vcn" "vcn" {
   compartment_id = var.compartment_id
   display_name   = "${var.display_name_prefix}-vcn"
   }
-

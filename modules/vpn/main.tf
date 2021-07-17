@@ -1,5 +1,8 @@
-// Author Balasubramannyam Sunil
-// balasubramannyam.sunil@oracle.com
+/*
+* Copyright (c) 2021 July
+//Author Balasubramannyam Sunil, email: balasubramannyam.sunil@oracle.com
+ */
+
 
 # ------ Create Customer Premise Equipment
 resource "oci_core_cpe" "my_cpe" {
@@ -53,6 +56,7 @@ data "oci_core_ipsec_connection_tunnel" "test_ipsec_connection_tunnel" {
 }
 
 resource "oci_core_ipsec_connection_tunnel_management" "test_ipsec_connection_tunnel_management" {
+  count          = var.bgp_enabled != 0 ? 1 : 0
   ipsec_id  = oci_core_ipsec.Ipsecvpn.id
   tunnel_id = data.oci_core_ipsec_connection_tunnels.test_ip_sec_connection_tunnels.ip_sec_connection_tunnels[0].id
   ike_version   = var.ikeversion
@@ -61,6 +65,7 @@ resource "oci_core_ipsec_connection_tunnel_management" "test_ipsec_connection_tu
 }
 
 resource "oci_core_ipsec_connection_tunnel_management" "test_ipsec_connection_tunnel_management1" {
+  count          = var.bgp_enabled != 0 ? 1 : 0
   ipsec_id  = oci_core_ipsec.Ipsecvpn.id
   tunnel_id = data.oci_core_ipsec_connection_tunnels.test_ip_sec_connection_tunnels.ip_sec_connection_tunnels[1].id
   ike_version   = var.ikeversion

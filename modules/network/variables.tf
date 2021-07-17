@@ -1,6 +1,8 @@
 /*
-* Copyright (c) 2019, 2020, Oracle and/or its affiliates. 
+* Copyright (c) 2021 July
+//Author Balasubramannyam Sunil, email: balasubramannyam.sunil@oracle.com
  */
+
 
 # OCI Service
 variable "compartment_id" {
@@ -19,5 +21,3 @@ variable "display_name_prefix" {
 variable "network_enabled" {
   default = true
 }
-
-

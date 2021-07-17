@@ -1,6 +1,4 @@
-// Author Balasubramannyam Sunil
-// balasubramannyam.sunil@oracle.com
-
+//Author Balasubramannyam Sunil, email: balasubramannyam.sunil@oracle.com
 resource "oci_core_drg" "my_drg" {
     #Required
     count          = var.drg_enabled != 0 ? 1 : 0

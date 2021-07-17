@@ -1,8 +1,8 @@
 /*
-* Copyright (c) 2019, 2021, Oracle and/or its affiliates.
+* Copyright (c) 2021 July
+//Author Balasubramannyam Sunil, email: balasubramannyam.sunil@oracle.com
  */
 
-// General settings
 variable "tenancy_ocid" {
   description = "Tenancy OCID"
 }
@@ -78,4 +78,29 @@ variable "cpe_ip" {
 variable "static_routes" {
 	type =	list(string)
 	default = ["192.168.0.0/16"]
+}
+
+variable "routing_type" {
+  description = "Static or BGP"
+}
+
+
+
+variable "bgp_asn" {
+  description = "asn"
+  default = ""
+
+}
+
+variable "cust_interface" {
+  description = "customer interface"
+  default = ""
+
+}
+
+
+variable "oracle_interface" {
+  description = "oracle interface"
+  default = ""
+
 }

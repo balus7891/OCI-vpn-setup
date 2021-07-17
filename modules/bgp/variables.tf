@@ -22,11 +22,30 @@ variable "display_name_prefix" {
   description = "Display name prefix for the resources created."
 }
 
-
 variable "staticroutes" {
 
 }
 
-variable "bgp_enabled" {
+variable "bgpasn" {
+
+}
+
+variable "custinterface" {
+
+}
+
+variable "oracleinterface" {
+
+}
+
+variable "routing" {
+
+}
+
+variable "static_enabled" {
+
+}
+
+variable "ipsec_id" {
 
 }

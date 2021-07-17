@@ -1,7 +1,7 @@
-title: Lift Service IPsec VPN Stack
-description: Input variables for the IPsec VPN Stack
+title: OCI IPsec VPN Stack
+description: Input variables for IPSec VPN Stack, Please refer the README.md file in the repository.
 schemaVersion: 1.1.0
-version: "2021"
+version: "July 2021"
 locale: "en"
 
 groupings:
@@ -17,7 +17,9 @@ groupings:
   - ${cpe_model}
   - ${ike_version}
   - ${cpe_ip}
-  - ${static_routes}  
+  - ${routing_type}
+
+
 
 - title: "Network Configuration"
   visible: ${quick_create}
@@ -25,12 +27,20 @@ groupings:
   - ${vcn_cidr}
   - ${vcnCompartment}
   - ${vcn}
- 
+
 - title: "DRG Configuration"
   visible: ${drg_create}
-  variables: 
+  variables:
   - ${drg_ocid}
   - ${drg}
+
+- title: "Routing Configuration"
+  visible: ${routing_type}
+  variables:
+  - ${static_routes}
+  - ${bgp_asn}
+  - ${cust_interface}
+  - ${oracle_interface}
 
 
 variables:
@@ -111,9 +121,9 @@ variables:
      - RTX RTX1210 Firmware Rev.14.01.28
      - Firebox with Fireware v12
      - PAN-OS 8.0.0
-     - MX Series - JunOS 15.1 or later 
+     - MX Series - JunOS 15.1 or later
     default: N.A
-    required: true    
+    required: true
 
   ike_version:
     title: IKE Version for the tunnel
@@ -124,26 +134,16 @@ variables:
      - V1
      - V2
     default: V1
-    required: true  
-   
+    required: true
+
   cpe_ip:
     title: CPE (Customer Premises Equipment) IP
     description: Enter the customer edge public IPv4 address
     visible: true
     type: string
     default:
-    required: true  
-    
-  static_routes:
-    title: Static Routes
-    description: Enter the static routes
-    visible: true
-    type: array
-    items:
-        type: string
-    minItems: 1
-    uniqueItems: true
-    required: true 
+    required: true
+
 
   drg_create:
     title: DRG Options
@@ -152,13 +152,22 @@ variables:
     type: enum
     enum:
      - Existing DRG will be used
-     - Create New DRG 
+     - Create New DRG
     default: Create DRG Resources
     required: true
-    
+
+  routing_type:
+    title: Routing Types
+    description: Select the Routing Type
+    visible: true
+    type: enum
+    enum:
+     - static
+     - BGP
+    default:
+    required: true
 
 
- 
   # Create Network options
   vcn_cidr:
     title: Virtual Network CIDR
@@ -168,7 +177,7 @@ variables:
     dependsOn:
        compartmentId: ${subnetCompartment}
        vcnId: ${vcn}
-       
+
     visible:
        eq:
         - ${quick_create}
@@ -196,16 +205,17 @@ variables:
     required: true
 
   # Create DRG options
-  
+
   drg_ocid:
     title: Target DRG
     description: The target DRG OCID Required for provisioning the VPN
     type: string
-    default: 
+    default:
+    required: true
     dependsOn:
        compartmentId: ${subnetCompartment}
        vcnId: ${vcn}
-       
+
     visible:
        eq:
         - ${drg_create}
@@ -219,6 +229,55 @@ variables:
     visible:
        eq:
         - ${drg_create}
-        - Create New DRG    
+        - Create New DRG
 
 
+  # Create Routing options
+
+  static_routes:
+    title: Static Routes
+    description: Enter the static routes
+    type: array
+    items:
+        type: string
+    minItems: 1
+    uniqueItems: true
+    required: true
+
+    visible:
+       eq:
+        - ${routing_type}
+        - static
+
+  bgp_asn:
+    title: BGP ASN
+    description: Customer BGP ASN
+    type: string
+    default:
+    required: true
+    visible:
+       eq:
+        - ${routing_type}
+        - BGP
+
+  cust_interface:
+    title: IPV4 Inside Tunnel Interface - CPE
+    description: Customer Interface
+    type: string
+    default:
+    required: true
+    visible:
+       eq:
+        - ${routing_type}
+        - BGP
+
+  oracle_interface:
+    title: IPV4 Inside Tunnel Interface - Oracle
+    description: Oracle Interface
+    type: string
+    default:
+    required: true
+    visible:
+       eq:
+        - ${routing_type}
+        - BGP

@@ -1,4 +1,10 @@
 
+/*
+* Copyright (c) 2021 July
+//Author Balasubramannyam Sunil, email: balasubramannyam.sunil@oracle.com
+ */
+
+
 // Random suffix to make things unique
 resource "random_string" "instance_uuid" {
   length  = 8
@@ -17,14 +23,9 @@ locals {
 
 module "network" {
   source = "./modules/network"
-
   display_name_prefix = local.resource_name_prefix
-
   compartment_id      = var.compartment_ocid
-
   vcn_cidr  = var.vcn_cidr
-
-
   network_enabled = var.quick_create != "Existing networking components will be used" ? 1 : 0
 }
 
@@ -48,4 +49,24 @@ module "vpn"{
     staticroutes  = var.static_routes
     #drgid = module.drg.drg_id
     drgid = var.drg_create != "Existing DRG will be used" ? module.drg.drg_id : var.drg_ocid
+    bgp_enabled = var.routing_type != "BGP" ? 1 : 0
+}
+
+
+module "bgp"{
+    source = "./modules/bgp"
+    display_name_prefix = local.resource_name_prefix
+    compartment_id = var.compartment_ocid
+    cpeid = var.cpe_model
+    cpeip = var.cpe_ip
+    ikeversion = var.ike_version
+    bgpasn  = var.bgp_asn
+    staticroutes  = var.static_routes
+    custinterface = var.cust_interface
+    oracleinterface = var.oracle_interface
+    #drgid = module.drg.drg_id
+    drgid = var.drg_create != "Existing DRG will be used" ? module.drg.drg_id : var.drg_ocid
+    static_enabled = var.routing_type != "static" ? 1 : 0
+    routing = var.routing_type
+    ipsec_id = module.vpn.vpnid
 }
