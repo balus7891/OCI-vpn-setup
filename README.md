@@ -3,7 +3,7 @@ OCI Resource manager stack for IPsec VPN deployment.
 
 ## Project description
 
-The stack help you to provision an IPsec VPN with all advanced options available.
+The stack help you to provision an OCI IPsec VPN with all advanced options available. It support both Static and BGP royting.
 
 ## Topology Diagram 
 
@@ -15,13 +15,13 @@ Here is a reference architecture diagram for the below deployment
 
 ## Functionality of the Stack
 
-Two Modes:
+You can deploy this stack with two modes of operation
 
-_Deploy IPSec VPN with new resources_ 
+1. _Deploy IPSec VPN with new resources_ 
 
 **Create New Network (Virtual Cloud Network) as well as new DRG (Dynamic Routing Gateway)**
 
-_Deploy IPSec VPN with existing resource in the tenancy_ 
+2. _Deploy IPSec VPN with existing resource in the tenancy_ 
 
 **You can use existing VCN (Virtual Cloud Network) and DRG (Dynamic Routing Gateway)**
 
