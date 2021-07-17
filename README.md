@@ -1,9 +1,9 @@
-# OCI IPSec VPN setup Stack
+# OCI IPsec VPN setup Stack
 OCI Resource manager stack for IPsec VPN deployment.
 
 ## Project description
 
-The stack help you to provision an OCI IPsec VPN with all advanced options available. It support both Static and BGP royting.
+The stack help you to provision an OCI IPsec VPN with all advanced options available. It support both Static and BGP routing.
 
 ## Topology Diagram 
 
@@ -17,11 +17,11 @@ Here is a reference architecture diagram for the below deployment
 
 You can deploy this stack with two modes of operation
 
-1. _Deploy IPSec VPN with new resources_ 
+1. _Deploy IPsec VPN with new resources_ 
 
 **Create New Network (Virtual Cloud Network) as well as new DRG (Dynamic Routing Gateway)**
 
-2. _Deploy IPSec VPN with existing resource in the tenancy_ 
+2. _Deploy IPsec VPN with existing resource in the tenancy_ 
 
 **You can use existing VCN (Virtual Cloud Network) and DRG (Dynamic Routing Gateway)**
 
@@ -32,7 +32,7 @@ You can deploy this stack with two modes of operation
 
 1. Click [![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/balus7891/OCI-vpn-setup/releases/download/v1.1/OCI_IPSec_VPN_setup_Stack-v1.1.zip)
 
-    If you aren't already signed in, when prompted, enter the tenancy and user credentials.Cancel changes
+    If you aren't already signed in, when prompted, enter the tenancy and user credentials. Cancel changes
 
 2. Review and accept the terms and conditions.
 
@@ -44,7 +44,7 @@ You can deploy this stack with two modes of operation
 
 6. Wait for the job to be completed, and review the plan.
 
-    To make any changes, return to the Stack Details page, click **Edit Stack**, and make the required changes. Then, run the **Plan** action again. (It's a best practive always plan and verify the action before **apply**)
+    To make any changes, return to the Stack Details page, click **Edit Stack**, and make the required changes. Then, run the **Plan** action again. (It's a best practice always plan and verify the action before **apply**)
 
 7. If no further changes are necessary, return to the Stack Details page, click **Apply**. 
 
@@ -52,7 +52,7 @@ You can deploy this stack with two modes of operation
 
 ### OCI Resource Manager Stack Output
 
-Once the job finsihed sucessfully you will receive the **Public IP and Pre-shared-Key** for both the tunnels as an ouput. You van see the same from the logs as well as from the **Output** tab
+Once the job finsihed sucessfully you will receive the **Public IP and Pre-shared-Key** for both the tunnels as an ouput. You can see the same from the logs as well as from the **Output** tab
 
 
 
