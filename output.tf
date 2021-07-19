@@ -23,8 +23,12 @@ locals {
   static-msg = "Static Routing Doesn't require ASN"
 }
 
+locals {
+  bgp-asn = "31898"
+}
+
 output "Oracle-BGP-ASN"{
-  value = var.routing_type != "BGP" ? [local.static-msg] : module.bgp.bgp-asn
+  value = var.routing_type != "BGP" ? [local.static-msg] : [local.bgp-asn]
 }
 
 
