@@ -36,7 +36,7 @@ module "drg"{
     ext_drg_id  = var.drg_ocid
     vcn_id              = var.quick_create != "Existing networking components will be used" ? module.network.vcn_id : var.vcn
       drg_enabled = var.drg_create != "Existing DRG will be used" ? 1 : 0
-      drg_attach = var.quick_create != "Existing networking components will be used" ? 1 : 0
+      drg_attach = var.quick_create != "Existing networking components will be used" && var.drg_create != "Create New DRG"  ? 1 : 0
 
 }
 
