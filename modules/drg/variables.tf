@@ -3,7 +3,7 @@ variable "compartment_id" {
 }
 
 variable "vcn_id" {
-  default = ""
+
 }
 
 
@@ -13,4 +13,12 @@ variable "drg_enabled" {
 
 variable "display_name_prefix" {
   description = "Display name prefix for the resources created."
+}
+
+variable "drg_attach" {
+
+}
+
+variable "ext_drg_id" {
+
 }
