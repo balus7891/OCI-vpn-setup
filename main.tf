@@ -68,6 +68,8 @@ module "bgp"{
     staticroutes  = var.static_routes
     custinterface = var.cust_interface
     oracleinterface = var.oracle_interface
+    secret1 = var.Tunnel-1_custom_shared_secret
+    secret2 = var.Tunnel-2_custom_shared_secret
     #drgid = module.drg.drg_id
     drgid = var.drg_create != "Existing DRG will be used" ? module.drg.drg_id : var.drg_ocid
     static_enabled = var.routing_type != "static" ? 1 : 0
