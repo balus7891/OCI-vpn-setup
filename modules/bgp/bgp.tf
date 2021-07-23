@@ -16,6 +16,7 @@ resource "oci_core_ipsec_connection_tunnel_management" "test_ipsec_connection_tu
   ike_version   = var.ikeversion
   routing = var.routing
   display_name  = "${var.display_name_prefix}-Tunnel1"
+  shared_secret = var.secret1
 
 bgp_session_info {
 
@@ -39,4 +40,5 @@ resource "oci_core_ipsec_connection_tunnel_management" "test_ipsec_connection_tu
   ike_version   = var.ikeversion
   routing = var.routing
   display_name  = "${var.display_name_prefix}-Tunnel2"
+  shared_secret = var.secret2
 }

@@ -49,6 +49,8 @@ module "vpn"{
     cpeip = var.cpe_ip
     ikeversion = var.ike_version
     staticroutes  = var.static_routes
+    secret1 = var.Tunnel-1_custom_shared_secret
+    secret2 = var.Tunnel-2_custom_shared_secret
     #drgid = module.drg.drg_id
     drgid = var.drg_create != "Existing DRG will be used" ? module.drg.drg_id : var.drg_ocid
     bgp_enabled = var.routing_type != "BGP" ? 1 : 0

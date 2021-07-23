@@ -42,6 +42,13 @@ groupings:
   - ${cust_interface}
   - ${oracle_interface}
 
+- title: "IPsecVPN Tunnel Advanced Optional Configuration"
+  visible:
+      and:
+        - show_advanced
+  variables:
+  - Tunnel-1_custom_shared_secret
+  - Tunnel-2_custom_shared_secret
 
 variables:
   # General Configuration
@@ -141,6 +148,9 @@ variables:
     description: Enter the customer edge public IPv4 address
     visible: true
     type: string
+    items:
+      type: string
+      pattern: "^(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\\/(3[0-2]|[1-2]?[0-9])$"
     default:
     required: true
 
@@ -166,6 +176,13 @@ variables:
      - BGP
     default:
     required: true
+
+  show_advanced:
+    type: boolean
+    title: "Show advanced options?"
+    description: "Shows advanced Tunnel options."
+    visible: true
+    default: false
 
 
   # Create Network options
@@ -230,6 +247,21 @@ variables:
        eq:
         - ${drg_create}
         - Create New DRG
+
+  Tunnel-1_custom_shared_secret:
+    title: Tunnel 1 shared screct
+    description: Provide custom shared secret
+    type: string
+    default: null
+    required:
+
+  Tunnel-2_custom_shared_secret:
+    title: Tunnel 2 shared screct
+    description: Provide custom shared secret
+    type: string
+    default: null
+    required:
+
 
 
   # Create Routing options

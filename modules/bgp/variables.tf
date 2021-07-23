@@ -49,3 +49,11 @@ variable "static_enabled" {
 variable "ipsec_id" {
 
 }
+
+variable "secret1" {
+  default = null
+}
+
+variable "secret2" {
+  default = null
+}

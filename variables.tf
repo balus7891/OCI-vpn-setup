@@ -104,3 +104,13 @@ variable "oracle_interface" {
   default = ""
 
 }
+
+variable "Tunnel-1_custom_shared_secret" {
+  default = null
+
+}
+
+variable "Tunnel-2_custom_shared_secret" {
+  default = null
+
+}

@@ -10,6 +10,14 @@ variable "ikeversion" {
   default = "V1"
 }
 
+variable "secret1" {
+  default = null
+}
+
+variable "secret2" {
+  default = null
+}
+
 variable "drgid" {
   default = ""
 }

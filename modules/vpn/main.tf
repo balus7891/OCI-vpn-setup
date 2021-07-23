@@ -62,6 +62,7 @@ resource "oci_core_ipsec_connection_tunnel_management" "test_ipsec_connection_tu
   ike_version   = var.ikeversion
   routing = "STATIC"
   display_name  = "${var.display_name_prefix}-Tunnel1"
+  shared_secret = var.secret1
 }
 
 resource "oci_core_ipsec_connection_tunnel_management" "test_ipsec_connection_tunnel_management1" {
@@ -71,4 +72,5 @@ resource "oci_core_ipsec_connection_tunnel_management" "test_ipsec_connection_tu
   ike_version   = var.ikeversion
   routing = "STATIC"
   display_name  = "${var.display_name_prefix}-Tunnel2"
+  shared_secret = var.secret2
 }
