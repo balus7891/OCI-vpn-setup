@@ -1,5 +1,7 @@
 # OCI IPsec VPN setup Stack
-OCI Resource manager stack for IPsec VPN deployment.
+OCI Resource manager stack for IPsec VPN deployment. 
+
+Resource Manager is an Oracle Cloud Infrastructure service that allows you to automate the process of provisioning your Oracle Cloud Infrastructure resources. Using Terraform, Resource Manager helps you install, configure, and manage resources through the "infrastructure-as-code" model.
 
 ## Project description
 
